@@ -1,0 +1,10 @@
+:root, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; }
+.windows-cursor-root { position: absolute; inset: 0; display: grid; place-items: center; font-family: "Segoe UI Variable", "Segoe UI", sans-serif; color: #eef1ff; pointer-events: none; }
+.windows-cursor-root main { --fill: #7c5cff; --outline: #fff; --accent: #39d9ff; display: flex; align-items: center; gap: clamp(1rem, 5vw, 2.2rem); min-width: min(86%, 32rem); padding: clamp(1.2rem, 5vw, 2.2rem); border: 1px solid rgb(255 255 255 / .12); border-radius: 1.5rem; background: rgb(7 9 18 / .74); box-shadow: 0 24px 80px rgb(0 0 0 / .34); backdrop-filter: blur(24px); }
+.windows-cursor-root .pointer { width: clamp(3.4rem, 18vw, 6rem); aspect-ratio: 1; flex: 0 0 auto; background: var(--fill); clip-path: polygon(12% 5%, 12% 82%, 36% 61%, 53% 96%, 72% 87%, 55% 55%, 88% 55%); filter: drop-shadow(0 0 2px var(--outline)) drop-shadow(0 0 12px var(--accent)); transition: opacity .2s; }
+.windows-cursor-root span { display: block; color: #8d99bc; font-size: .72rem; font-weight: 800; letter-spacing: .15em; }
+.windows-cursor-root strong { display: block; margin-top: .25rem; font-size: clamp(1.15rem, 5vw, 1.8rem); }
+.windows-cursor-root strong[data-tone="success"] { color: #81f5bd; }
+.windows-cursor-root strong[data-tone="warning"] { color: #ffe09b; }
+.windows-cursor-root strong[data-tone="error"] { color: #ff9daf; }
+.windows-cursor-root p { margin: .4rem 0 0; color: #aab4d0; line-height: 1.45; }

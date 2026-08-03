@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7c5cff"/><stop offset="1" stop-color="#39d9ff"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#39d9ff" flood-opacity=".45"/></filter></defs>
+  <rect width="1280" height="720" rx="48" fill="#070912"/>
+  <path d="M430 115v410l103-98 82 179 84-40-84-174h149z" fill="url(#g)" stroke="#fff" stroke-width="22" stroke-linejoin="round" filter="url(#s)"/>
+  <text x="860" y="330" text-anchor="middle" fill="#eef1ff" font-family="Segoe UI, sans-serif" font-weight="700" font-size="58">Windows</text>
+  <text x="860" y="405" text-anchor="middle" fill="#9da9ce" font-family="Segoe UI, sans-serif" font-weight="600" font-size="58">Cursor</text>
+</svg>

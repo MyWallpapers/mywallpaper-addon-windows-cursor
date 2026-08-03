@@ -1,0 +1,31 @@
+{
+  "runtime": "canvas-v1",
+  "name": "Windows Cursor",
+  "description": "Applies a lightweight custom pointer to the Windows user session and restores the configured Windows scheme when disabled.",
+  "version": "1.0.0",
+  "entry": "dist/index.html",
+  "thumbnail": "assets/thumbnail.png",
+  "deviceSettingsVersion": "1",
+  "ui": { "pointerEvents": "none" },
+  "settings": [
+    { "id": "cursor", "type": "section", "label": "Windows cursor", "description": "These settings affect the current Windows user session and are shared by every layer." },
+    { "id": "enabled", "type": "boolean", "label": "Custom pointer", "parent": "cursor", "scope": "device", "default": true },
+    { "id": "size", "type": "select", "label": "Size", "parent": "cursor", "scope": "device", "default": "32", "options": [
+      { "label": "Compact", "value": "24" }, { "label": "Standard", "value": "32" }, { "label": "Large", "value": "40" }, { "label": "Extra large", "value": "48" }
+    ] },
+    { "id": "appearance", "type": "section", "label": "Appearance" },
+    { "id": "fillColor", "type": "color", "label": "Fill", "parent": "appearance", "scope": "device", "default": "#7c5cff" },
+    { "id": "outlineColor", "type": "color", "label": "Outline", "parent": "appearance", "scope": "device", "default": "#ffffff" },
+    { "id": "glowColor", "type": "color", "label": "Edge accent", "parent": "appearance", "scope": "device", "default": "#39d9ff" },
+    { "id": "outlineWidth", "type": "range", "label": "Outline width", "parent": "appearance", "scope": "device", "default": 2, "min": 1, "max": 4, "step": 1 }
+  ],
+  "native": {
+    "companion": {
+      "runtime": "process-v2",
+      "entries": {
+        "windows-x86_64": "native/out/windows-x86_64/bin/backend.exe",
+        "windows-aarch64": "native/out/windows-aarch64/bin/backend.exe"
+      }
+    }
+  }
+}
