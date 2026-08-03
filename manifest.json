@@ -2,7 +2,7 @@
   "runtime": "canvas-v1",
   "name": "Windows Cursor",
   "description": "Applies a lightweight custom pointer to the Windows user session and restores the configured Windows scheme when disabled.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "entry": "dist/index.html",
   "thumbnail": "assets/thumbnail.png",
   "deviceSettingsVersion": "1",
