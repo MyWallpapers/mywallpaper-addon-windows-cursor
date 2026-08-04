@@ -26,11 +26,11 @@ export function mount({ layer }: CanvasAddonMountContext): () => void {
   void connect()
 
   async function connect(): Promise<void> {
-    if (!layer.native.companion.available) {
-      setState('Unavailable', 'error')
-      return
-    }
     try {
+      // Canvas mounts before the desktop finishes attaching the verified
+      // artifact. The SDK's `connect()` promise is the synchronization point;
+      // reading `available` once here would incorrectly make that transient
+      // startup state permanent.
       const next = await layer.native.companion.connect()
       if (disposed) { next.close(); return }
       connection = next
