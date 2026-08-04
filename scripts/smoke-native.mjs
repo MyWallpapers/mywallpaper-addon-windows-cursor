@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process'
 import { resolve } from 'node:path'
 
+const PROTOCOL_VERSION = 5
 const executable = resolve(process.argv[2] ?? 'native/out/windows-x86_64/bin/backend.exe')
 const child = spawn(executable, [], { env: { ...process.env, MYWALLPAPER_PROTOCOL: 'process-v2' }, stdio: ['pipe', 'pipe', 'inherit'] })
 let buffer = Buffer.alloc(0)
@@ -27,13 +28,13 @@ child.stdout.on('data', (chunk) => {
 child.on('error', finish)
 child.on('exit', (code) => { if (!finished) finish(new Error(`native companion exited with ${code}`)) })
 
-write({ type: 'init', v: 3, layerSettings: {}, deviceSettings: { enabled: true, size: '32', fillColor: '#7c5cff', outlineColor: '#ffffff', glowColor: '#39d9ff', outlineWidth: 2 } })
+write({ type: 'init', v: PROTOCOL_VERSION, layerSettings: {}, deviceSettings: { enabled: true, size: '32', fillColor: '#7c5cff', outlineColor: '#ffffff', glowColor: '#39d9ff', outlineWidth: 2 } })
 
 function write(value) { const payload = Buffer.from(JSON.stringify(value)); const prefix = Buffer.alloc(4); prefix.writeUInt32LE(payload.length); child.stdin.write(Buffer.concat([prefix, payload])) }
 function finish(error) {
   if (finished) return
   finished = true; clearTimeout(timeout)
-  try { write({ type: 'shutdown', v: 3 }) } catch {}
+  try { write({ type: 'shutdown', v: PROTOCOL_VERSION }) } catch {}
   child.stdin.end()
   if (error) { console.error(error.message); process.exitCode = 1 }
   else console.log('Native Windows cursor smoke test passed and the Windows scheme was restored.')
